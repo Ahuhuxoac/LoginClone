@@ -20,6 +20,8 @@ import Animated from 'react-native-reanimated';
 import React, { useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import { interpolate, Extrapolate, useAnimatedStyle, useSharedValue} from "react-native-reanimated";
+import TodoListScreen from "../screen/TodoListScreen/index";
+import ItemScreen from "../screen/ItemScreen/index";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -39,10 +41,10 @@ const Screens = ({ navigation }) => {
   const progress = useDrawerProgress();
   console.log(progress)
   const animatedStyle = useAnimatedStyle(() => {
-    const scale = interpolate(progress.value, [0, 1], [1,0.8], {
+    const scale = interpolate(progress.value, [0, 0.9, 1], [1, 0.8], {
       extrapolateRight: Extrapolate.CLAMP,
     });
-    const borderRadius = interpolate(progress.value, [0, 1], [0, 25], {
+    const borderRadius = interpolate(progress.value, [0, 1], [1, 15], {
       extrapolateRight: Extrapolate.CLAMP,
     });
     return {
@@ -52,17 +54,52 @@ const Screens = ({ navigation }) => {
   });
   const [open,setopen] = useState(false);
   return (
-    <Animated.View style={[{ 
-      flex: 1, 
+    <View style={{flex: 1}}>
+        <View>
+     {
+      open === true 
+      ?
+      <Pressable
+      style={{
+        marginTop: 40,
+        marginLeft: 20,
+        position: 'absolute'
+      }}
+      onPress={()=> {
+        navigation.closeDrawer();
+        setopen(!open);
+      }}
+      >
+      <AntDesign name="close" size={30} color="#ffffff" />
+      </Pressable>
+      
+      : 
+      null
+     }
+     </View>
+
+
+     <Animated.View style={[{ 
+      flex: 1,
+      shadowColor: '#000',
+      // shadowOffset: {
+      //   width: 30,
+      //   height: 1,
+      // },
+      // shadowOpacity: 0.3,
+      // shadowRadius: 25,
+      // elevation: 10, 
       overflow: 'scroll'
      },animatedStyle]}>
+     
      
       <Stack.Navigator
         screenOptions={{
           headerTransparent: true,
           headerTitle: null,
           headerLeft: () => (
-            <Pressable transparent onPress={() => {
+            <Pressable 
+            transparent onPress={() => {
               navigation.openDrawer();
               setopen(!open);
             }}>
@@ -70,8 +107,8 @@ const Screens = ({ navigation }) => {
             </Pressable>
           ),
         }}>
-        <Stack.Screen name="Home">{props => <HomeScreen {...props} />}</Stack.Screen>
-        <Stack.Screen name="Reminder">{props => <Reminder {...props} />}</Stack.Screen>
+        <Stack.Screen name="TodoListScreen">{props => <TodoListScreen {...props} />}</Stack.Screen>
+        <Stack.Screen name="ItemScreen">{props => <ItemScreen {...props} />}</Stack.Screen>
         <Stack.Screen name="Invite your friends">{props => <Invite {...props} />}</Stack.Screen>
         <Stack.Screen name="Send a testimonial">{props => <Send {...props} />}</Stack.Screen>
         <Stack.Screen name="Welcome video">{props => <Welcomevideo {...props} />}</Stack.Screen>
@@ -82,6 +119,8 @@ const Screens = ({ navigation }) => {
 
       </Stack.Navigator>
     </Animated.View>
+    </View>
+    
   );
 };
 
@@ -93,7 +132,6 @@ const HomeMatch = () => {
     style={{
       flex: 1,
       backgroundColor: '#2D3748',
-      position: 'relative'
     }}>
       <Drawer.Navigator 
       initialRouteName="Home" 
@@ -101,14 +139,6 @@ const HomeMatch = () => {
         drawerType: 'slide',
         headerShown: false,
         headerTransparent: 'true',
-        drawerActiveTintColor: 'white',
-        drawerInactiveTintColor: 'black',
-        drawerActiveBackgroundColor: 'black',
-        drawerItemStyle: {
-          height: 52,
-          alignItem: 'center',
-
-        },
         sceneContainerStyle: {
           backgroundColor: 'transparent'
         },
@@ -123,7 +153,7 @@ const HomeMatch = () => {
       <Drawer.Screen name="Screens"
       options={{ 
         drawerActiveTintColor: 'red',
-        drawerActiveBackgroundColor: 'black',
+        drawerActiveBackgroundColor: 'red',
       }}
       >
         {props => <Screens {...props} />}
@@ -140,8 +170,7 @@ const RootNavigator = () => {
   });
   return (
     <NavigationContainer>
-      {/* {checker === false ? <LoginMatch /> : <HomeMatch />} */}
-        <HomeMatch />
+     {checker === false ? <LoginMatch /> : <HomeMatch />}
     </NavigationContainer>
   );
 };

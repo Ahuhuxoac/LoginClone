@@ -16,8 +16,6 @@ export const SlicerBar = (props) => {
                         <Image style={styles.logo}
                         source={require('../../image/logo.png')}
                         />
-                        
-
                         <Image style={styles.avatar}
                         source={require('../../image/avatar.png')}
                         />
@@ -25,12 +23,17 @@ export const SlicerBar = (props) => {
                     </View>
                     <Drawer.Section>
                         <DrawerItem 
+                            style={{
+                                backgroundColor: 'black',
+                                borderTopLeftRadius: 20,
+                                borderBottomLeftRadius: 20,
+                            }}
                             label="Home"
                             labelStyle={{
                                 fontSize: 15,
                                 fontWeight: '400',
                                 lineHeight: 20,
-                                color: '#959EA7'
+                                color: '#959EA7',
                             }}
                             icon={()=> <AntDesign name="home" size={24} color='#bf32af' />}
                             onPress={() => props.navigation.navigate('Home')}
@@ -41,7 +44,7 @@ export const SlicerBar = (props) => {
                                 fontSize: 15,
                                 fontWeight: '400',
                                 lineHeight: 20,
-                                color: '#959EA7'
+                                color: '#959EA7',
                             }}
                             icon={()=> <FontAwesome name="bell-o" size={24} color='#959EA7' />}
                             onPress={() => props.navigation.navigate('Reminder')}
