@@ -56,24 +56,27 @@ export const SlicerBar = (props) => {
                                 lineHeight: 20,
                                 color: '#959EA7'
                             }}
+                            onPress={() => props.navigation.navigate('Invite your friends')}
                             icon={()=> <Ionicons name="person-outline" size={24} color='#959EA7' />}
                         /><DrawerItem 
-                            label="Send atestimonial"
+                            label="Send a testimonial"
                             labelStyle={{
                                 fontSize: 15,
                                 fontWeight: '400',
                                 lineHeight: 20,
                                 color: '#959EA7'
                             }}
+                            onPress={() => props.navigation.navigate('Send a testimonial')}
                             icon={()=> <Feather name="mail" size={24} color='#959EA7' /> }
                         /><DrawerItem 
-                            label="Welocome video"
+                            label="Welcome video"
                             labelStyle={{
                                 fontSize: 15,
                                 fontWeight: '400',
                                 lineHeight: 20,
                                 color: '#959EA7'
                             }}
+                            onPress={() => props.navigation.navigate('Welcome video')}
                             icon={()=> <Ionicons name="videocam-outline" size={24} color='#959EA7' /> }
                         /><DrawerItem 
                             label="Rewards"
@@ -83,6 +86,7 @@ export const SlicerBar = (props) => {
                                 lineHeight: 20,
                                 color: '#959EA7'
                             }}
+                            onPress={() => props.navigation.navigate('Rewards')}
                             icon={()=> <Entypo name="medal" size={24} color='#959EA7' />}
                         /><DrawerItem 
                             label="Help & Support"
@@ -92,6 +96,7 @@ export const SlicerBar = (props) => {
                                 lineHeight: 20,
                                 color: '#959EA7'
                             }}
+                            onPress={() => props.navigation.navigate('Help & Support')}
                             icon={()=> <Feather name="help-circle" size={24} color='#959EA7' />}
                         /><DrawerItem 
                             label="Settings"
@@ -101,6 +106,7 @@ export const SlicerBar = (props) => {
                                 lineHeight: 20,
                                 color: '#959EA7'
                             }}
+                            onPress={() => props.navigation.navigate('Reminder')}
                             icon={()=><AntDesign name="setting" size={24} color='#959EA7' /> }
                         /><DrawerItem 
                             label="Disclaimer"
@@ -110,6 +116,7 @@ export const SlicerBar = (props) => {
                                 lineHeight: 20,
                                 color: '#959EA7'
                             }}
+                            onPress={() => props.navigation.navigate('Settings')}
                             icon={()=> <MaterialIcons name="dangerous" size={24} color='#959EA7' />}
                         />
                     </Drawer.Section>

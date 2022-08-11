@@ -46,7 +46,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
       <View
         style={{
           flexDirection: "row",
-          width: windowWidth*0.8,
+          width: "91%",
           justifyContent: 'space-between'
         }}
       >

@@ -39,7 +39,6 @@ const LoginMatch = () => {
 
 const Screens = ({ navigation }) => {
   const progress = useDrawerProgress();
-  console.log(progress)
   const animatedStyle = useAnimatedStyle(() => {
     const scale = interpolate(progress.value, [0, 0.9, 1], [1, 0.8], {
       extrapolateRight: Extrapolate.CLAMP,
@@ -107,13 +106,13 @@ const Screens = ({ navigation }) => {
             </Pressable>
           ),
         }}>
-        <Stack.Screen name="TodoListScreen">{props => <TodoListScreen {...props} />}</Stack.Screen>
-        <Stack.Screen name="ItemScreen">{props => <ItemScreen {...props} />}</Stack.Screen>
+        <Stack.Screen name="Home">{props => <TodoListScreen {...props} />}</Stack.Screen>
+        <Stack.Screen name="Reminder">{props => <ItemScreen {...props} />}</Stack.Screen>
         <Stack.Screen name="Invite your friends">{props => <Invite {...props} />}</Stack.Screen>
         <Stack.Screen name="Send a testimonial">{props => <Send {...props} />}</Stack.Screen>
         <Stack.Screen name="Welcome video">{props => <Welcomevideo {...props} />}</Stack.Screen>
         <Stack.Screen name="Rewards">{props => <Rewards {...props} />}</Stack.Screen>
-        <Stack.Screen name="Help&Support">{props => <Help {...props} />}</Stack.Screen>
+        <Stack.Screen name="Help & Support">{props => <Help {...props} />}</Stack.Screen>
         <Stack.Screen name="Settings">{props => <Settings {...props} />}</Stack.Screen>
         <Stack.Screen name="Disclaimer">{props => <Disclaimer {...props} />}</Stack.Screen>
 
@@ -170,7 +169,8 @@ const RootNavigator = () => {
   });
   return (
     <NavigationContainer>
-     {checker === false ? <LoginMatch /> : <HomeMatch />}
+     {/* {checker === false ? <LoginMatch /> : <HomeMatch />} */}
+     <HomeMatch />
     </NavigationContainer>
   );
 };
