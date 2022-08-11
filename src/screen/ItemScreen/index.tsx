@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import Textbt from "../../components/Textbt";
 import { useRoute, useNavigation } from "@react-navigation/native";
+import { AntDesign } from '@expo/vector-icons';
 
 import { addTodo, updatedTodo } from "../../redux/thunks/todoSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,8 +50,15 @@ const ItemScreen = () => {
   return (
     <View style={styles.root}>
       <View style={styles.header}>
-        <Textbt text="Back" onPress={goHome} />
-        <Textbt text="Save" onPress={handleSubmit} />
+        <Pressable
+        onPress={goHome}
+        >
+          <AntDesign name="back" size={24} color="black" />
+        </Pressable>
+        <Pressable
+        onPress={handleSubmit}>
+          <AntDesign name="save" size={24} color="black" />
+        </Pressable>
       </View>
       <View style={styles.container}>
         <Text>TITLE</Text>
@@ -75,13 +83,13 @@ const ItemScreen = () => {
 const styles = StyleSheet.create({
   root: {
     margin: 20,
-    marginTop: 50,
+    marginTop: 130,
   },
   header: {
-    flexDirection: "row",
-    backgroundColor: "##e1e8f2",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20
+    
   },
   container: {},
   title: {

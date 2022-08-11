@@ -38,7 +38,7 @@ const TodoListScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop:50,
+    marginTop:70,
     margin: 20,
   },
   icon: {

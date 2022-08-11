@@ -81,13 +81,6 @@ const Screens = ({ navigation }) => {
      <Animated.View style={[{ 
       flex: 1,
       shadowColor: '#000',
-      // shadowOffset: {
-      //   width: 30,
-      //   height: 1,
-      // },
-      // shadowOpacity: 0.3,
-      // shadowRadius: 25,
-      // elevation: 10, 
       overflow: 'scroll'
      },animatedStyle]}>
      
@@ -106,8 +99,8 @@ const Screens = ({ navigation }) => {
             </Pressable>
           ),
         }}>
-        <Stack.Screen name="Home">{props => <TodoListScreen {...props} />}</Stack.Screen>
-        <Stack.Screen name="Reminder">{props => <ItemScreen {...props} />}</Stack.Screen>
+        <Stack.Screen name="TodoListScreen">{props => <TodoListScreen {...props} />}</Stack.Screen>
+        <Stack.Screen name="ItemScreen">{props => <ItemScreen {...props} />}</Stack.Screen>
         <Stack.Screen name="Invite your friends">{props => <Invite {...props} />}</Stack.Screen>
         <Stack.Screen name="Send a testimonial">{props => <Send {...props} />}</Stack.Screen>
         <Stack.Screen name="Welcome video">{props => <Welcomevideo {...props} />}</Stack.Screen>
@@ -169,8 +162,7 @@ const RootNavigator = () => {
   });
   return (
     <NavigationContainer>
-     {/* {checker === false ? <LoginMatch /> : <HomeMatch />} */}
-     <HomeMatch />
+     {checker === false ? <LoginMatch /> : <HomeMatch />}
     </NavigationContainer>
   );
 };

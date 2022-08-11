@@ -47,7 +47,7 @@ export const SlicerBar = (props) => {
                                 color: '#959EA7',
                             }}
                             icon={()=> <FontAwesome name="bell-o" size={24} color='#959EA7' />}
-                            onPress={() => props.navigation.navigate('Reminder')}
+                            onPress={() => props.navigation.navigate('ItemScreen')}
                         /><DrawerItem 
                             label="Invite your friends"
                             labelStyle={{
