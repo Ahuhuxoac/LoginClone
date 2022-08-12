@@ -1,25 +1,14 @@
 import React from "react";
 import { Text, TextInput, View, StyleSheet } from "react-native";
 import { Controller } from "react-hook-form";
-const InputText = ({
-  control,
-  name,
-  placeholder,
-  secureTextEntry,
-}) => {
+const InputText = ({ control, name, placeholder, secureTextEntry }) => {
   return (
     <Controller
       control={control}
       name={name}
-      render={({
-        field: { value, onChange, onBlur },
-      }) => (
+      render={({ field: { value, onChange, onBlur } }) => (
         <>
-          <View
-            style={[
-              styles.container,
-            ]}
-          >
+          <View style={[styles.container]}>
             <TextInput
               placeholder={placeholder}
               value={value}
@@ -29,7 +18,6 @@ const InputText = ({
               style={styles.input}
             />
           </View>
-         
         </>
       )}
     />
@@ -48,7 +36,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 50,
-    color: '#A4BCC1',
+    color: "#A4BCC1",
     paddingLeft: 50,
   },
   error: {
