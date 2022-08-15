@@ -68,8 +68,9 @@ const ItemScreen = () => {
         <Controller
           control={control}
           name="title"
+          defaultValue={ '' || Items?.title}
           render={({
-            field: { value = '' || Items?.title , onChange, onBlur },
+            field: { value  , onChange, onBlur },
           }) => (
             <>
               <View style={[styles.container]}>
@@ -90,8 +91,9 @@ const ItemScreen = () => {
         <Controller
           control={control}
           name="description"
+          defaultValue={ '' || Items?.description}
           render={({
-            field: { value = '' || Items?.description , onChange , onBlur },
+            field: { value , onChange , onBlur },
           }) => (
             <>
               <View>
