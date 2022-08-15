@@ -8,9 +8,9 @@ import { logoutAC } from "../../redux/actions/action";
 import { logout } from "../../redux/thunks/thunk";
 const Reminder = () => {
   const dispatch = useDispatch();
-  const logoutHandler = () => {
+  const logoutHandler = useCallback(() => {
     dispatch(logout(), logoutAC());
-  };
+  },[]);
   return (
     <View style={styles.root}>
 

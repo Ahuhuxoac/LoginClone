@@ -19,6 +19,7 @@ interface TodoItemProps {
 
 const TodoItem = ({ todo }: TodoItemProps) => {
   const [isCheck, setCheck] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (todo) {
@@ -44,7 +45,6 @@ const TodoItem = ({ todo }: TodoItemProps) => {
     []
   );
 
-  const dispatch = useDispatch();
 
   return (
     <View style={styles.form}>

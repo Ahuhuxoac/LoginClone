@@ -187,8 +187,7 @@ const RootNavigator = () => {
   });
   return (
     <NavigationContainer>
-      {/* {checker === false ? <LoginMatch /> : <HomeMatch />} */}
-      <HomeMatch />
+      {checker === false ? <LoginMatch /> : <HomeMatch />}
     </NavigationContainer>
   );
 };
