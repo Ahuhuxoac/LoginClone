@@ -14,8 +14,7 @@ const schema = Yup.object().shape({
   title: Yup.string()
     .min(6, "Title must be at least 6 characters")
     .required("Title is required"),
-  description: Yup.string()
-      .min(0)
+  description: Yup.string().min(0),
 });
 
 const ItemScreen = () => {
@@ -40,18 +39,21 @@ const ItemScreen = () => {
 
   let isChecked = false;
   const dispatch = useDispatch();
-  const handleTitle = useCallback((data) => {
-    let title = data.title;
-    let description = data.description;
-    if (description == undefined) description = "";
-    if (route.params?.id) {
-      dispatch(updatedTodo({ id, title, description, isChecked }));
+  const handleTitle = useCallback(
+    (data) => {
+      let title = data.title;
+      let description = data.description;
+      if (description == undefined) description = "";
+      if (route.params?.id) {
+        dispatch(updatedTodo({ id, title, description, isChecked }));
+        goHome();
+        return;
+      }
+      dispatch(addTodo({ id, title, description, isChecked }));
       goHome();
-      return;
-    }
-    dispatch(addTodo({ id, title, description, isChecked }));
-    goHome();
-  }, [Items]);
+    },
+    [Items]
+  );
 
   return (
     <View style={styles.root}>
@@ -68,10 +70,8 @@ const ItemScreen = () => {
         <Controller
           control={control}
           name="title"
-          defaultValue={ '' || Items?.title}
-          render={({
-            field: { value  , onChange, onBlur },
-          }) => (
+          defaultValue={"" || Items?.title}
+          render={({ field: { value, onChange, onBlur } }) => (
             <>
               <View style={[styles.container]}>
                 <TextInput
@@ -91,10 +91,8 @@ const ItemScreen = () => {
         <Controller
           control={control}
           name="description"
-          defaultValue={ '' || Items?.description}
-          render={({
-            field: { value , onChange , onBlur },
-          }) => (
+          defaultValue={"" || Items?.description}
+          render={({ field: { value, onChange, onBlur } }) => (
             <>
               <View>
                 <TextInput
