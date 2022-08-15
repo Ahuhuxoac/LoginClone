@@ -16,8 +16,8 @@ import Header from "../../components/Header";
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
 const schema = Yup.object().shape({
-  fistname: Yup.string().min(3, 'Password must be at least 3 characters').required('Password is required'),
-  lastname: Yup.string().min(3, 'Password must be at least 3 characters').required('Password is required'),
+  firstname: Yup.string().min(3, 'First must be at least 3 characters').required('Firstname is required'),
+  lastname: Yup.string().min(3, 'LastName must be at least 3 characters').required('Lastname is required'),
   username: Yup.string().matches(EMAIL_REGEX, 'Email is invalid').required('Email is required'),
   password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required')
 })
@@ -29,17 +29,16 @@ const SignupScreen = ({ navigation }) => {
   const goLogin = useCallback(() => {
     navigation.navigate("LoginScreen");
   }, []);
+
+
   const signUpHandler = useCallback((data) => {
     dispatch(
       signup(data.username, data.password),
       signupRequestedAC(data.username, data.password),
       navigation.navigate("LoginScreen")
     );
-  }, []);
-  const hander = (data,errors) => {
-    console.log(data,errors)
-  }
-  const [isCheck, setCheck] = useState(false)
+  },[]);
+const [isCheck, setCheck] = useState(false)
   return (
     <View style={styles.root}>
       <Header />
@@ -51,10 +50,6 @@ const SignupScreen = ({ navigation }) => {
               control={control}
               name="firstname"
               placeholder="First name"
-              rules={{
-                required: "First name is required",
-                minLength: { value: 3, message: "At least 3 characters" },
-              }}
             />
             <MaterialCommunityIcons style={styles.icon} 
             name="account" 
@@ -65,9 +60,8 @@ const SignupScreen = ({ navigation }) => {
           <View style= {styles.textinput}>
             <InputText
               control={control}
-              name="fullname"
-              placeholder="Last name"
-              
+              name="lastname"
+              placeholder="Last name" 
             />
             <MaterialCommunityIcons style={styles.icon} 
             name="account" 
@@ -120,7 +114,7 @@ const SignupScreen = ({ navigation }) => {
           </Pressable>
           
           <View style={{position: 'absolute',marginLeft: 68-33}}>
-            <Text style = {styles.text}>by clicking on "Register" you agree to our 
+            <Text style = {styles.text}>by clicking on "Register" you agree to our {`\n`}
               <Text style={styles.textcolor}> Terms & Condition</Text> and 
               <Text style = {styles.textcolor}> Privacy Policy</Text>
             </Text>
@@ -128,7 +122,7 @@ const SignupScreen = ({ navigation }) => {
         </View>
 
         <Pressable 
-        onPress={handleSubmit(handleSubmit)}
+        onPress={handleSubmit(signUpHandler)}
         style={styles.buttonregis}
         >
           <LinearGradient

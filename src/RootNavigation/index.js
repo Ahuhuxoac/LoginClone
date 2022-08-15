@@ -26,7 +26,6 @@ import {
   interpolate,
   Extrapolate,
   useAnimatedStyle,
-  useSharedValue,
 } from "react-native-reanimated";
 import TodoListScreen from "../screen/TodoListScreen/index";
 import ItemScreen from "../screen/ItemScreen/index";

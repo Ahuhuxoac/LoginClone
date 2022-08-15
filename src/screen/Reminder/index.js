@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Button from "../../components/Button";

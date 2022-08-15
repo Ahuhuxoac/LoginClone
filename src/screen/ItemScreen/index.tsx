@@ -14,6 +14,8 @@ const schema = Yup.object().shape({
   title: Yup.string()
     .min(6, "Title must be at least 6 characters")
     .required("Title is required"),
+  description: Yup.string()
+      .min(0)
 });
 
 const ItemScreen = () => {
@@ -39,9 +41,9 @@ const ItemScreen = () => {
   let isChecked = false;
   const dispatch = useDispatch();
   const handleTitle = useCallback((data) => {
-    console.log(data);
     let title = data.title;
     let description = data.description;
+    if (description == undefined) description = "";
     if (route.params?.id) {
       dispatch(updatedTodo({ id, title, description, isChecked }));
       goHome();
@@ -49,7 +51,7 @@ const ItemScreen = () => {
     }
     dispatch(addTodo({ id, title, description, isChecked }));
     goHome();
-  }, []);
+  }, [Items]);
 
   return (
     <View style={styles.root}>
@@ -67,7 +69,7 @@ const ItemScreen = () => {
           control={control}
           name="title"
           render={({
-            field: { value = Items?.title || "", onChange, onBlur },
+            field: { value = '' || Items?.title , onChange, onBlur },
           }) => (
             <>
               <View style={[styles.container]}>
@@ -89,7 +91,7 @@ const ItemScreen = () => {
           control={control}
           name="description"
           render={({
-            field: { value = Items?.description || "", onChange, onBlur },
+            field: { value = '' || Items?.description , onChange , onBlur },
           }) => (
             <>
               <View>
