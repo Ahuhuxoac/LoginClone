@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import { Feather } from '@expo/vector-icons';
 import Button from "../../components/Button";
@@ -8,9 +8,9 @@ import { logoutAC } from "../../redux/actions/action";
 import { logout } from "../../redux/thunks/thunk";
 const HomeScreen = () => {
   const dispatch = useDispatch();
-  const logoutHandler = () => {
+  const logoutHandler = useCallback(() => {
     dispatch(logout(), logoutAC());
-  };
+  },[]);
   return (
       <View style={styles.root}>
         <View style={styles.container}>
