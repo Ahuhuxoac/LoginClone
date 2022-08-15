@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Text, Pressable, StyleSheet, View, Modal, Alert } from "react-native";
+import React, { useCallback, useEffect, useState } from "react";
+import { Pressable, StyleSheet, View, Alert } from "react-native";
 import CheckBox from "../CheckBox";
 import Textbt from "../Textbt";
 import { AntDesign } from "@expo/vector-icons";
@@ -7,7 +7,6 @@ import { useNavigation } from "@react-navigation/native";
 import { deletedTodo } from "../../redux/thunks/todoSlice";
 import { Dimensions } from "react-native";
 import { useDispatch } from "react-redux";
-import Popup from "../Popup";
 const windowWidth = Dimensions.get("window").width;
 
 interface TodoItemProps {
@@ -22,26 +21,28 @@ const TodoItem = ({ todo }: TodoItemProps) => {
   const [isCheck, setCheck] = useState(false);
 
   useEffect(() => {
-    if (!todo) {
-      return;
+    if (todo) {
+      setCheck(todo.isChecked);
     }
-    setCheck(todo.isChecked);
   }, [todo]);
 
   const navigation = useNavigation();
-  const onPress = () => {
+  const onPress = useCallback(() => {
     navigation.navigate("ItemScreen", { id: todo.id });
-  };
+  }, []);
 
-  const createTwoButtonAlert = () =>
-    Alert.alert("Confirm delete", "DELETE TODO", [
-      {
-        text: "Cancel",
-        onPress: () => null,
-        style: "cancel",
-      },
-      { text: "OK", onPress: () => dispatch(deletedTodo({ id: todo.id })) },
-    ]);
+  const createTwoButtonAlert = useCallback(
+    () =>
+      Alert.alert("Confirm delete", "DELETE TODO", [
+        {
+          text: "Cancel",
+          onPress: () => null,
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => dispatch(deletedTodo({ id: todo.id })) },
+      ]),
+    []
+  );
 
   const dispatch = useDispatch();
 
