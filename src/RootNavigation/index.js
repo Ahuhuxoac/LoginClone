@@ -29,6 +29,7 @@ import {
 } from "react-native-reanimated";
 import TodoListScreen from "../screen/TodoListScreen/index";
 import ItemScreen from "../screen/ItemScreen/index";
+import Tutorial from "../screen/Video";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -36,8 +37,10 @@ const Drawer = createDrawerNavigator();
 const LoginMatch = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="LoginScreen" component={LoginScreen} />
-      <Stack.Screen name="SignupScreen" component={SignupScreen} />
+      {/* <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen name="SignupScreen" component={SignupScreen} /> */}
+      <Stack.Screen name="SignupScreen" component={Tutorial} />
+
 
     </Stack.Navigator>
   );
@@ -89,9 +92,9 @@ const Screens = ({ navigation }) => {
             shadowColor: '#000000',
             shadowOffset: {
               height: 20,
-              width: -30,
+              width: -20,
             },
-            shadowOpacity:0.8,
+            shadowOpacity:0.6,
             shadowRadius: 0,
             elevation: 2,
             

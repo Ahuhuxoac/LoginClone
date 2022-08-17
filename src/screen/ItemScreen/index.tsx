@@ -43,7 +43,6 @@ const ItemScreen = () => {
     (data) => {
       let title = data.title;
       let description = data.description;
-      if (description == undefined) description = "";
       if (route.params?.id) {
         dispatch(updatedTodo({ id, title, description, isChecked }));
         goHome();
@@ -70,7 +69,7 @@ const ItemScreen = () => {
         <Controller
           control={control}
           name="title"
-          defaultValue={"" || Items?.title}
+          defaultValue={Items?.title || ""}
           render={({ field: { value, onChange, onBlur } }) => (
             <>
               <View style={[styles.container]}>
@@ -91,7 +90,7 @@ const ItemScreen = () => {
         <Controller
           control={control}
           name="description"
-          defaultValue={"" || Items?.description}
+          defaultValue={Items?.description || ""}
           render={({ field: { value, onChange, onBlur } }) => (
             <>
               <View>
