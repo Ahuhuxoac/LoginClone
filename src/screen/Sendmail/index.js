@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 101,
     fontSize: 17,
-    fontWeight: 500,
+    fontWeight: '500',
     color: "#ffffff",
   },
   container: {
@@ -141,8 +141,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#ffffff",
-    fontSize: "15",
-    lineHeight: "20",
+    fontSize: 15,
+    lineHeight: 20,
     paddingLeft: 24,
   },
 });

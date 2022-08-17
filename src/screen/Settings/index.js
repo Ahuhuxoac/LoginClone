@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 101,
     fontSize: 17,
-    fontWeight: 500,
+    fontWeight: '500',
     color: "#ffffff",
   },
   container: {
