@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
@@ -51,7 +51,7 @@ const ItemScreen = () => {
       dispatch(addTodo({ id, title, description, isChecked }));
       goHome();
     },
-    [Items]
+    [route.params?.id, goHome]
   );
 
   return (
@@ -78,7 +78,7 @@ const ItemScreen = () => {
                   value={value}
                   onChangeText={onChange}
                   onBlur={onBlur}
-                  style={styles.input}
+                  style={styles.title}
                 />
               </View>
             </>
@@ -130,11 +130,6 @@ const styles = StyleSheet.create({
     color: "pink",
   },
   title: {
-    height: 50,
-    color: "#A4BCC1",
-    paddingLeft: 50,
-  },
-  input: {
     height: 50,
     color: "#A4BCC1",
     paddingLeft: 50,

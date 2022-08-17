@@ -187,13 +187,12 @@ const HomeMatch = () => {
 };
 
 const RootNavigator = () => {
-  // const checker = useSelector((state) => {
-  //   return state.Login.auth;
-  // });
+  const checker = useSelector((state) => {
+    return state.Login.auth;
+  });
   return (
     <NavigationContainer>
-      {/* {checker === false ? <LoginMatch /> : <HomeMatch />} */}
-      <HomeMatch />
+      {checker === false ? <LoginMatch /> : <HomeMatch />}
     </NavigationContainer>
   );
 };
