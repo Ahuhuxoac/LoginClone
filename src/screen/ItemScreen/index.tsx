@@ -28,7 +28,7 @@ const ItemScreen = () => {
 
   const navigation = useNavigation();
   const goHome = useCallback(() => {
-    navigation.navigate("TodoListScreen");
+    navigation.navigate("Home");
   }, []);
 
   const route = useRoute();

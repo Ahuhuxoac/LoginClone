@@ -126,7 +126,7 @@ export const SlicerBar = (props) => {
                 lineHeight: 20,
                 color: "#959EA7",
               }}
-              onPress={() => props.navigation.navigate("Reminder")}
+              onPress={() => props.navigation.navigate("Settings")}
               icon={() => (
                 <AntDesign name="setting" size={24} color="#959EA7" />
               )}

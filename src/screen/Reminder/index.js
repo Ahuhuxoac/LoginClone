@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 
 import { logoutAC } from "../../redux/actions/action";
 import { logout } from "../../redux/thunks/thunk";
+import { LinearGradient } from "expo-linear-gradient";
 const Reminder = () => {
   const dispatch = useDispatch();
   const logoutHandler = useCallback(() => {
@@ -13,15 +14,20 @@ const Reminder = () => {
   },[]);
   return (
     <View style={styles.root}>
-
       <View style={styles.container}>
-        <View style={styles.info}>
-          <Text>Email của bạn là :</Text>
-          <Text>SDT của bạn là :</Text>
-          <Text>ID của bạn là :</Text>
+        <View>
+          <Text>User info</Text>
+          <Image source = {require('../../image/avatar.png')} />
+          <Pressable style={styles.button}>
+            <Text>Change profile photo</Text>
+          </Pressable>
         </View>
-
-        <Button text="Đăng xuất" onPress={logoutHandler} />
+        <View style={styles.info}>
+          <LinearGradient>
+            <Text>First name</Text>
+            <Text></Text>
+          </LinearGradient>
+        </View>
       </View>
     </View>
   );

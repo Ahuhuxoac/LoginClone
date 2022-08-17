@@ -38,6 +38,7 @@ const LoginMatch = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
       <Stack.Screen name="SignupScreen" component={SignupScreen} />
+
     </Stack.Navigator>
   );
 };
@@ -45,10 +46,10 @@ const LoginMatch = () => {
 const Screens = ({ navigation }) => {
   const progress = useDrawerProgress();
   const animatedStyle = useAnimatedStyle(() => {
-    const scale = interpolate(progress.value, [0, 0.9, 1], [1, 0.8], {
+    const scale = interpolate(progress.value, [0, 0.9 , 1], [1,0.95,0.80], {
       extrapolateRight: Extrapolate.CLAMP,
     });
-    const borderRadius = interpolate(progress.value, [0, 1], [1, 15], {
+    const borderRadius = interpolate(progress.value, [0, 1], [1, 25], {
       extrapolateRight: Extrapolate.CLAMP,
     });
     return {
@@ -58,12 +59,14 @@ const Screens = ({ navigation }) => {
   });
   const [open, setopen] = useState(false);
   return (
-    <View style={{ flex: 1 }}>
-      <View>
-        {open === true ? (
+    <View style={{ flex: 1, flexDirection: 'row'}}>
+      <View style={{ marginBottom: 25, left: 80, position: 'relative'}}>
+        
+        {
+          open === true ? (
           <Pressable
-            style={{
-              marginTop: 40,
+            style={{        
+              marginTop: 30,
               marginLeft: 20,
               position: "absolute",
             }}
@@ -72,31 +75,45 @@ const Screens = ({ navigation }) => {
               setopen(!open);
             }}
           >
-            <AntDesign name="close" size={30} color="#ffffff" />
+            <AntDesign name="close" size={28} color="#ffffff" />
           </Pressable>
         ) : null}
       </View>
-
+      
       <Animated.View
         style={[
           {
             flex: 1,
-            shadowColor: "#000",
-            overflow: "scroll",
+            overflow: "hidden",
+            alignItems: 'stretch',
+            shadowColor: '#000000',
+            shadowOffset: {
+              height: 20,
+              width: -30,
+            },
+            shadowOpacity:0.8,
+            shadowRadius: 0,
+            elevation: 2,
+            
           },
           animatedStyle,
         ]}
       >
+
         <Stack.Navigator
           screenOptions={{
+            headerShown: true,
             headerTransparent: true,
-            headerTitle: null,
+            title: '',
             headerLeft: () => (
               <Pressable
                 transparent
                 onPress={() => {
-                  navigation.openDrawer();
-                  setopen(!open);
+                  open == true
+                  ?
+                  navigation.openDrawer()
+                  :
+                  navigation.openDrawer(setopen(!open))
                 }}
               >
                 <Feather
@@ -109,33 +126,15 @@ const Screens = ({ navigation }) => {
             ),
           }}
         >
-          <Stack.Screen name="TodoListScreen">
-            {(props) => <TodoListScreen {...props} />}
-          </Stack.Screen>
-          <Stack.Screen name="ItemScreen">
-            {(props) => <ItemScreen {...props} />}
-          </Stack.Screen>
-          <Stack.Screen name="Invite your friends">
-            {(props) => <Invite {...props} />}
-          </Stack.Screen>
-          <Stack.Screen name="Send a testimonial">
-            {(props) => <Send {...props} />}
-          </Stack.Screen>
-          <Stack.Screen name="Welcome video">
-            {(props) => <Welcomevideo {...props} />}
-          </Stack.Screen>
-          <Stack.Screen name="Rewards">
-            {(props) => <Rewards {...props} />}
-          </Stack.Screen>
-          <Stack.Screen name="Help & Support">
-            {(props) => <Help {...props} />}
-          </Stack.Screen>
-          <Stack.Screen name="Settings">
-            {(props) => <Settings {...props} />}
-          </Stack.Screen>
-          <Stack.Screen name="Disclaimer">
-            {(props) => <Disclaimer {...props} />}
-          </Stack.Screen>
+          <Stack.Screen name="Home" component={TodoListScreen} />
+          <Stack.Screen name="ItemScreen" component={ItemScreen} />
+          <Stack.Screen name="Invite your friends" component={Invite} />
+          <Stack.Screen name="Send a testimonial" component={Send} />
+          <Stack.Screen name="Welcome video" component={Welcomevideo} />
+          <Stack.Screen name="Rewards" component={Rewards} />
+          <Stack.Screen name="Help & Support" component={Help} />
+          <Stack.Screen name="Settings" component={Settings} />
+          <Stack.Screen name="Disclaimer" component={Disclaimer} />
         </Stack.Navigator>
       </Animated.View>
     </View>
@@ -160,17 +159,21 @@ const HomeMatch = () => {
             backgroundColor: "transparent",
           },
           overlayColor: "transparent",
-          drawerStyle: { backgroundColor: "#2D3748" },
+          drawerStyle: { 
+            backgroundColor: "#2D3748",
+            flex: 1,
+            width: '62%',
+           },
         }}
         drawerContent={(props) => {
           return <SlicerBar {...props} />;
         }}
+          
       >
         <Drawer.Screen
           name="Screens"
           options={{
-            drawerActiveTintColor: "red",
-            drawerActiveBackgroundColor: "red",
+
           }}
         >
           {(props) => <Screens {...props} />}
@@ -181,12 +184,13 @@ const HomeMatch = () => {
 };
 
 const RootNavigator = () => {
-  const checker = useSelector((state) => {
-    return state.Login.auth;
-  });
+  // const checker = useSelector((state) => {
+  //   return state.Login.auth;
+  // });
   return (
     <NavigationContainer>
-      {checker === false ? <LoginMatch /> : <HomeMatch />}
+      {/* {checker === false ? <LoginMatch /> : <HomeMatch />} */}
+      <HomeMatch />
     </NavigationContainer>
   );
 };

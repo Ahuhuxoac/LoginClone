@@ -1,65 +1,46 @@
 import React, { useCallback } from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import Button from "../../components/Button";
-import { useDispatch } from "react-redux";
+import {Calendar} from 'react-native-calendars'
 
-import { logoutAC } from "../../redux/actions/action";
-import { logout } from "../../redux/thunks/thunk";
 const Welcomevideo = () => {
-  const dispatch = useDispatch();
-  const logoutHandler = useCallback(() => {
-    dispatch(logout(), logoutAC());
-  },[]);
   return (
     <View style={styles.root}>
       <View style={styles.header}>
-        <Pressable style={styles.back} onPress={logoutHandler}>
-          <AntDesign
-            style={{ marginRight: 10 }}
-            name="back"
-            size={30}
-            color="black"
-          />
-          <Text style={styles.title}>Back</Text>
-        </Pressable>
+        <AntDesign name="back" size={28} color="white" />
+        <Text style={styles.title}>Settings</Text>
       </View>
-
       <View style={styles.container}>
-        <View style={styles.info}>
-          <Text>Email của bạn là :</Text>
-          <Text>SDT của bạn là :</Text>
-          <Text>ID của bạn là :</Text>
-        </View>
-
-        <Button text="Đăng xuất" onPress={logoutHandler} />
+        <Calendar 
+          onDayPress={(response)=> console.log(response)}
+        />
       </View>
+
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   root: {
-    marginTop: 30,
-    margin: 20,
+    backgroundColor: "#2D3748",
+    opacity: 0.8,
+    height: "100%",
+    width: "100%",
   },
-  header: {},
-  back: {
+  header: {
+    marginTop: 50,
     flexDirection: "row",
+    marginLeft: 24,
     alignItems: "center",
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
+    marginLeft: 101,
+    fontSize: 17,
+    fontWeight: 500,
+    color: "#ffffff",
   },
   container: {
-    marginTop: 200,
-    fontSize: 18,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  info: {
-    marginBottom: 50,
+    marginTop: 28,
   },
 });
 

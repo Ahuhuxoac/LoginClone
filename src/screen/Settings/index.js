@@ -14,25 +14,47 @@ const Settings = () => {
   return (
     <View style={styles.root}>
       <View style={styles.header}>
-        <Pressable style={styles.back} onPress={logoutHandler}>
-          <AntDesign
-            style={{ marginRight: 10 }}
-            name="back"
-            size={30}
-            color="black"
-          />
-          <Text style={styles.title}>Back</Text>
-        </Pressable>
+        <AntDesign name="back" size={28} color="white" />
+        <Text style={styles.title}>Settings</Text>
       </View>
 
       <View style={styles.container}>
-        <View style={styles.info}>
-          <Text>Email của bạn là :</Text>
-          <Text>SDT của bạn là :</Text>
-          <Text>ID của bạn là :</Text>
-        </View>
+        <Pressable
+        style={styles.button}
+        >
+          <Text style={styles.text}>My Subscriptions</Text>
+          <AntDesign name="right" size={24} color="#ab22a2" />
+        </Pressable>
+        <Pressable
+        style={styles.button}
+        >
+          <Text style={styles.text}>UProfile Tag</Text>
+          <AntDesign name="right" size={24} color="#ab22a2" />
+        </Pressable>
+        <Pressable
+        style={styles.button}
+        >
+          <Text style={styles.text}>User Info</Text>
+          <AntDesign name="right" size={24} color="#ab22a2" />
+        </Pressable>
 
-        <Button text="Đăng xuất" onPress={logoutHandler} />
+      </View>
+      <View style={styles.dick}>
+      <Pressable
+        style={styles.button}
+        >
+          <Text style={styles.text}>Terms & Conditions</Text>
+        </Pressable>
+        <Pressable
+        style={styles.button}
+        >
+          <Text style={styles.text}>Privacy policy</Text>
+        </Pressable>
+        <Pressable
+        style={[styles.button,{marginTop: 40}]}
+        >
+          <Text style={styles.text}>Delete account</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -40,27 +62,44 @@ const Settings = () => {
 
 const styles = StyleSheet.create({
   root: {
-    marginTop: 30,
-    margin: 20,
+    backgroundColor: "#2D3748",
+    opacity: 0.8,
+    height: "100%",
+    width: "100%",
   },
-  header: {},
-  back: {
+  header: {
+    marginTop: 50,
     flexDirection: "row",
+    marginLeft: 24,
     alignItems: "center",
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
+    marginLeft: 101,
+    fontSize: 17,
+    fontWeight: 500,
+    color: "#ffffff",
   },
   container: {
-    marginTop: 200,
-    fontSize: 18,
-    justifyContent: "center",
-    alignItems: "center",
+    marginTop: 28,
   },
-  info: {
-    marginBottom: 50,
+  button: {
+    height: 52,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padddingRight: 24,
+    paddingLeft: 24,
+    backgroundColor: '#2e2c5c',
+    marginVertical: 4,
+    alignItems: 'center'
   },
+  text: {
+    color: '#ffffff',
+    fontWeight: '400',
+    fontSize: 15,
+  },
+  dick: {
+    marginTop: 284,
+  }
 });
 
 export default Settings;
