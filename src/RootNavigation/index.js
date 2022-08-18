@@ -1,6 +1,6 @@
-import LoginScreen from "../screen/LoginScreen";
-import HomeScreen from "../screen/HomeScreen";
-import SignupScreen from "../screen/SignupScreen";
+import LoginScreen from "~/screen/LoginScreen";
+import HomeScreen from "~/screen/HomeScreen";
+import SignupScreen from "~/screen/SignupScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useSelector } from "react-redux";
@@ -9,15 +9,14 @@ import {
   useDrawerProgress,
 } from "@react-navigation/drawer";
 import "react-native-gesture-handler";
-import Reminder from "../screen/Reminder";
-import Invite from "../screen/Invite";
-import Send from "../screen/Sendmail";
-import Welcomevideo from "../screen/Welcomevideo";
-import Rewards from "../screen/Rewards";
-import Help from "../screen/Help";
-import Disclaimer from "../screen/Disclaimer";
-import Settings from "../screen/Settings";
-import { SlicerBar } from "../components/SliceBar";
+import Invite from "~/screen/Invite";
+import Send from "~/screen/Sendmail";
+import Welcomevideo from "~/screen/Welcomevideo";
+import Rewards from "~/screen/Rewards";
+import Help from "~/screen/Help";
+import Disclaimer from "~/screen/Disclaimer";
+import Settings from "~/screen/Settings";
+import { SlicerBar } from "~/components/SliceBar";
 import { Feather, AntDesign } from "@expo/vector-icons";
 import Animated from "react-native-reanimated";
 import React, { useState } from "react";
@@ -27,9 +26,10 @@ import {
   Extrapolate,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import TodoListScreen from "../screen/TodoListScreen/index";
-import ItemScreen from "../screen/ItemScreen/index";
-import Tutorial from "../screen/Video";
+import TodoListScreen from "~/screen/TodoListScreen/index";
+import ItemScreen from "~/screen/ItemScreen/index";
+import Tutorial from "~/screen/Video";
+import Calendars from "~/screen/Calendars";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
