@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from "react";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
 import { useForm } from "react-hook-form";
 import { MaterialIcons, FontAwesome, Entypo, AntDesign } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
@@ -43,7 +43,7 @@ const LoginScreen = ({ navigation }) => {
   });
 
   return (
-    <View style={styles.root}>
+    <ScrollView style={styles.root}>
       <Header />
       <View style={styles.container}>
         <Text style={styles.title}>Log In</Text>
@@ -116,7 +116,7 @@ const LoginScreen = ({ navigation }) => {
           <AntDesign style={{position: 'absolute', marginLeft: 20}} name="apple1" size={24} color="#ffffff" />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

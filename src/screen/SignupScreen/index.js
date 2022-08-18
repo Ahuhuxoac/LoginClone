@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import { Text, View, StyleSheet, Pressable, ScrollView } from "react-native";
 import { useForm } from "react-hook-form";
 import { MaterialCommunityIcons, MaterialIcons, FontAwesome} from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -40,7 +40,7 @@ const SignupScreen = ({ navigation }) => {
   },[]);
 const [isCheck, setCheck] = useState(false)
   return (
-    <View style={styles.root}>
+    <ScrollView style={styles.root}>
       <Header />
       <View style={styles.container }>
         <Text style={styles.title}>Register</Text>
@@ -146,7 +146,7 @@ const [isCheck, setCheck] = useState(false)
  
       </View>
 
-    </View>
+    </ScrollView>
   );
 };
 

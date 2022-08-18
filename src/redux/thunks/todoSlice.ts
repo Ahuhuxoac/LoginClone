@@ -9,27 +9,7 @@ export const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
-    // addNewTodo: (state, action) => {
-    //   state.todoList.push(action.payload);
-    // },
-    // updateTodo: (state, action) => {
-    //   const {
-    //     payload: { title, id, description,isChecked},
-    //   } = action;
-    //   state.todoList = state.todoList.map((todo) =>
-    //     todo.id === id
-    //     ?
-    //     { ...todo, description, title, isChecked }
-    //     :
-    //     todo,
-    //   );
-    // },
-    // deleteTodo: (state, action) => {
-    //   console.log(action.payload.id)
-    //   state.todoList = state.todoList.filter(
-    //     (todo) => todo.id !== action.payload.id
-    //     );
-    // },
+ 
   },
   extraReducers: (builder) => {
     builder
