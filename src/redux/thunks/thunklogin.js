@@ -10,10 +10,8 @@ export const login = (username, password) => {
     let userauth = [];
     let errorText = "";
     try {
-      res = await axios
-        .get("https://62d8ce909088313935951ab9.mockapi.io/api/test/blogs")  
+      res = await axios.get("https://62d8ce909088313935951ab9.mockapi.io/api/test/blogs")  
       userauth = res.data;
-      console.log(userauth)
       let token = null;
       for (var i = 0; i < userauth.length; i++) {
         if (

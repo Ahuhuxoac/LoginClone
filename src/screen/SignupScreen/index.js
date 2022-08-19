@@ -6,7 +6,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as Yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import Button from "../../components/Button";
 import InputText from "../../components/InputText";
 import { useDispatch } from "react-redux";
 import { signup } from "../../redux/thunks/thunk";

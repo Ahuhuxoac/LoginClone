@@ -29,7 +29,6 @@ import {
 import TodoListScreen from "~/screen/TodoListScreen/index";
 import ItemScreen from "~/screen/ItemScreen/index";
 import Tutorial from "~/screen/Video";
-import Calendars from "~/screen/Calendars";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -39,6 +38,8 @@ const LoginMatch = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
       <Stack.Screen name="SignupScreen" component={SignupScreen} />
+      {/* <Stack.Screen name="SignupScreen" component={Tutorial} /> */}
+
     </Stack.Navigator>
   );
 };
@@ -190,6 +191,7 @@ const RootNavigator = () => {
   return (
     <NavigationContainer>
       {checker === false ? <LoginMatch /> : <HomeMatch />}
+      {/* <LoginMatch /> */}
     </NavigationContainer>
   );
 };
