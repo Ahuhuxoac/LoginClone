@@ -103,9 +103,27 @@ const Screens = ({ navigation }) => {
 
         <Stack.Navigator
           screenOptions={{
-            headerShown: true,
             headerTransparent: true,
             title: '',
+            headerLeft: () => (
+              <Pressable
+                transparent
+                onPress={() => {
+                  open == true
+                  ?
+                  navigation.openDrawer()
+                  :
+                  navigation.openDrawer(setopen(!open))
+                }}
+              >
+                <AntDesign 
+                name="arrowleft" 
+                size={24} 
+                color="white"
+                style={{ paddingHorizontal: 10 }}
+                 />
+              </Pressable>
+            ),
             headerRight: () => (
               <Pressable
                 transparent
@@ -120,7 +138,7 @@ const Screens = ({ navigation }) => {
                 <Feather
                   name="menu"
                   size={24}
-                  color="black"
+                  color="white"
                   style={{ paddingHorizontal: 10 }}
                 />
               </Pressable>
@@ -192,6 +210,7 @@ const RootNavigator = () => {
     <NavigationContainer>
       {/* {checker === false ? <LoginMatch /> : <HomeMatch />} */}
       <LoginMatch />
+      {/* <HomeMatch /> */}
     </NavigationContainer>
   );
 };

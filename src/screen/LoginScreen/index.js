@@ -10,9 +10,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { I18n } from "i18n-js";
-import en from "../../../I18n/en.json";
-import vi from "../../../I18n/vi.json";
+import i18n from '../../../I18n/i18n'
 import { Picker } from "@react-native-picker/picker";
 
 import Button from "../../components/Button";
@@ -22,10 +20,6 @@ import { login } from "../../redux/thunks/thunklogin";
 import { loginRequestedAC, changeLanguage} from "../../redux/actions/action";
 import Header from "../../components/Header";
 
-const i18n = new I18n({
-  ...en,
-  ...vi,
-});
 
 const EMAIL_REGEX =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -72,8 +66,8 @@ const LoginScreen = ({ navigation }) => {
     );
   }, []);
 
-  const language = useSelector((state) => {
-    i18n.locale =state.Change.language
+  useSelector((state) => {
+    i18n.locale = state.Change.language
   });
 
 
@@ -81,8 +75,8 @@ const LoginScreen = ({ navigation }) => {
     <ScrollView style={styles.root}>
       <Header />
       <View style={styles.container}>
-      <Text>{language}</Text>
         <Picker
+          style={{color: "white"}}
           selectedValue={selectLG}
           onValueChange={(itemValue, itemIndex) => {
             setSelectLG(itemValue);

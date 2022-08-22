@@ -7,7 +7,6 @@ const Welcomevideo = () => {
   return (
     <View style={styles.root}>
       <View style={styles.header}>
-        <AntDesign name="back" size={28} color="white" />
         <Text style={styles.title}>Settings</Text>
       </View>
       <View style={styles.container}>
@@ -31,12 +30,12 @@ const styles = StyleSheet.create({
     marginTop: 50,
     flexDirection: "row",
     marginLeft: 24,
-    alignItems: "center",
+    alignSelf: "center",
+    justifyContent:'center'
   },
   title: {
-    marginLeft: 101,
     fontSize: 17,
-    fontWeight: 500,
+    fontWeight: '500',
     color: "#ffffff",
   },
   container: {

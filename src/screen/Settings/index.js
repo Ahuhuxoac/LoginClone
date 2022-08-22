@@ -1,20 +1,21 @@
 import React, { useCallback } from "react";
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import { Text, View, StyleSheet, Pressable, ScrollView, Dimensions } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Button from "../../components/Button";
 import { useDispatch } from "react-redux";
 
 import { logoutAC } from "../../redux/actions/action";
 import { logout } from "../../redux/thunks/thunk";
+
+const height = Dimensions.get('window').height;
 const Settings = () => {
   const dispatch = useDispatch();
   const logoutHandler = useCallback(() => {
     dispatch(logout(), logoutAC());
   },[]);
   return (
-    <View style={styles.root}>
+    <ScrollView style={styles.root}>
       <View style={styles.header}>
-        <AntDesign name="back" size={28} color="white" />
         <Text style={styles.title}>Settings</Text>
       </View>
 
@@ -23,23 +24,23 @@ const Settings = () => {
         style={styles.button}
         >
           <Text style={styles.text}>My Subscriptions</Text>
-          <AntDesign name="right" size={24} color="#ab22a2" />
+          <AntDesign name="right" size={24} color="#eb17c0" style={{paddingRight: 23}} />
         </Pressable>
         <Pressable
         style={styles.button}
         >
-          <Text style={styles.text}>UProfile Tag</Text>
-          <AntDesign name="right" size={24} color="#ab22a2" />
+          <Text style={styles.text}>Profile Tag</Text>
+          <AntDesign name="right" size={24} color="#eb17c0" style={{paddingRight: 23}} />
         </Pressable>
         <Pressable
         style={styles.button}
         >
           <Text style={styles.text}>User Info</Text>
-          <AntDesign name="right" size={24} color="#ab22a2" />
+          <AntDesign name="right" size={24} color="#eb17c0" style={{paddingRight: 23}} />
         </Pressable>
 
       </View>
-      <View style={styles.dick}>
+      <View style={styles.bottom}>
       <Pressable
         style={styles.button}
         >
@@ -51,19 +52,18 @@ const Settings = () => {
           <Text style={styles.text}>Privacy policy</Text>
         </Pressable>
         <Pressable
-        style={[styles.button,{marginTop: 40}]}
+        style={[styles.button,{marginTop: 40,bottom: 0}]}
         >
-          <Text style={styles.text}>Delete account</Text>
+          <Text style={[styles.text,{color: '#FF4471'}]}>Delete account</Text>
         </Pressable>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   root: {
     backgroundColor: "#2D3748",
-    opacity: 0.8,
     height: "100%",
     width: "100%",
   },
@@ -71,13 +71,14 @@ const styles = StyleSheet.create({
     marginTop: 50,
     flexDirection: "row",
     marginLeft: 24,
-    alignItems: "center",
+    alignSeft: 'center',
+    justifyContent: 'center'
   },
   title: {
-    marginLeft: 101,
     fontSize: 17,
     fontWeight: '500',
     color: "#ffffff",
+    textAlign: 'center',
   },
   container: {
     marginTop: 28,
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padddingRight: 24,
     paddingLeft: 24,
-    backgroundColor: '#2e2c5c',
+    backgroundColor: '#24285c',
     marginVertical: 4,
     alignItems: 'center'
   },
@@ -97,9 +98,9 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: 15,
   },
-  dick: {
-    marginTop: 284,
-  }
+  bottom: {
+   marginTop: height-500,
+  },
 });
 
 export default Settings;
