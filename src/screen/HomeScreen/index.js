@@ -1,11 +1,11 @@
 import React, { useCallback } from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import { Feather } from '@expo/vector-icons';
-import Button from "~/components/Button";
+import Button from "../../components/Button";
 import { useDispatch } from "react-redux";
 
-import { logoutAC } from "~/redux/actions/action";
-import { logout } from "~/redux/thunks/thunk";
+import { logoutAC } from "../../redux/actions/action";
+import { logout } from "../../redux/thunks/thunk";
 const HomeScreen = () => {
   const dispatch = useDispatch();
   const logoutHandler = useCallback(() => {

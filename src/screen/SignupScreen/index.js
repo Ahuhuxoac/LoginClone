@@ -5,12 +5,21 @@ import { MaterialCommunityIcons, MaterialIcons, FontAwesome} from '@expo/vector-
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup";
+import { I18n } from "i18n-js";
+import en from "../../../I18n/en.json";
+import vi from "../../../I18n/vi.json";
 
 import InputText from "../../components/InputText";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../redux/thunks/thunk";
 import { signupRequestedAC } from "../../redux/actions/action";
 import Header from "../../components/Header";
+
+
+const i18n = new I18n({
+  ...en,
+  ...vi,
+});
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
@@ -37,18 +46,23 @@ const SignupScreen = ({ navigation }) => {
       navigation.navigate("LoginScreen")
     );
   },[]);
+
+  const language = useSelector((state) => {
+    i18n.locale =state.Change.language
+  });
+
 const [isCheck, setCheck] = useState(false)
   return (
     <ScrollView style={styles.root}>
       <Header />
       <View style={styles.container }>
-        <Text style={styles.title}>Register</Text>
+        <Text style={styles.title}>{i18n.t("register")}</Text>
         <View style={styles.info}>
           <View style={styles.textinput}>
             <InputText
               control={control}
               name="firstname"
-              placeholder="First name"
+              placeholder={i18n.t("firstname")}
             />
             <MaterialCommunityIcons style={styles.icon} 
             name="account" 
@@ -60,7 +74,7 @@ const [isCheck, setCheck] = useState(false)
             <InputText
               control={control}
               name="lastname"
-              placeholder="Last name" 
+              placeholder={i18n.t("lastname")}
             />
             <MaterialCommunityIcons style={styles.icon} 
             name="account" 
@@ -86,7 +100,7 @@ const [isCheck, setCheck] = useState(false)
           
           <View>
             <InputText
-              placeholder="Password"
+              placeholder={i18n.t("password")}
               control={control}
               name="password"
               secureTextEntry
@@ -113,9 +127,9 @@ const [isCheck, setCheck] = useState(false)
           </Pressable>
           
           <View style={{position: 'absolute',marginLeft: 68-33}}>
-            <Text style = {styles.text}>by clicking on "Register" you agree to our {`\n`}
-              <Text style={styles.textcolor}> Terms & Condition</Text> and 
-              <Text style = {styles.textcolor}> Privacy Policy</Text>
+            <Text style = {styles.text}>{i18n.t("byclick")}{`\n`}
+              <Text style={styles.textcolor}>{i18n.t("term")}</Text>{i18n.t("and")}
+              <Text style = {styles.textcolor}>{i18n.t("Privacy")}</Text>
             </Text>
           </View>
         </View>
@@ -130,16 +144,16 @@ const [isCheck, setCheck] = useState(false)
             locations={[0.0, 1.0]}
             style={styles.button}
           >
-            <Text style={styles.textbold}>Register</Text>
+            <Text style={styles.textbold}>{i18n.t("register")}</Text>
           </LinearGradient>
         </Pressable>
 
         <View style={styles.textlogin}>
-          <Text style={styles.text}>Already have an account?  </Text>
+          <Text style={styles.text}>{i18n.t("haveac")}</Text>
           <Pressable
           onPress = {goLogin}
           >
-            <Text style={[styles.textcolor, {fontWeight: '700'}]}>Log In</Text>
+            <Text style={[styles.textcolor, {fontWeight: '700'}]}>{i18n.t("login")}</Text>
           </Pressable>
         </View>
  
@@ -215,7 +229,7 @@ const styles = StyleSheet.create({
     color: '#ffffff'
   },
   buttonregis: {
-    marginTop: 152-5
+    marginTop: 50
   },
 });
 

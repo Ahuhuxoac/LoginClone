@@ -16,6 +16,7 @@ const InputText = ({ control, name, placeholder, secureTextEntry }) => {
               onBlur={onBlur}
               secureTextEntry={secureTextEntry}
               style={styles.input}
+              placeholderTextColor="#A4BCC1"
             />
           </View>
         </>

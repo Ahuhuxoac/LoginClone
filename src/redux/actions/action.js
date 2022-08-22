@@ -1,4 +1,4 @@
-import {LOGIN,LOGOUT,SIGNUP,LOGIN_FAILED,LOGIN_SUCCESS,SIGNUP_SUCCESS} from '../types'
+import {LOGIN,LOGOUT,SIGNUP,LOGIN_FAILED,LOGIN_SUCCESS,SIGNUP_SUCCESS,CHANGE_LANGUAGE} from '../types'
 
 
 
@@ -55,3 +55,10 @@ export const signupRequestedAC = (username,password) => {
     },
   };
 };
+
+export const changeLanguage = (language) => {
+  return {
+      type: CHANGE_LANGUAGE,
+      language
+  }
+}
