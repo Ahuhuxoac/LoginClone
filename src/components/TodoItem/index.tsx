@@ -64,7 +64,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
         <Textbt text={todo.title} onPress={onPress} />
         {isCheck === true ? (
           <Pressable style={styles.delete} onPress={createTwoButtonAlert}>
-            <AntDesign name="delete" size={24} color="black" />
+            <AntDesign name="delete" size={24} color="white" />
           </Pressable>
         ) : null}
       </View>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   title: {
     flex: 1,
-    color: "black",
+    color: "white",
     fontSize: 18,
     marginLeft: 7,
     padding: 10,

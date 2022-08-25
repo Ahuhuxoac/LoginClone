@@ -1,18 +1,11 @@
 import React, { useCallback } from "react";
 import { Text, View, StyleSheet, Pressable, ScrollView, Dimensions } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import Button from "../../components/Button";
-import { useDispatch } from "react-redux";
-
-import { logoutAC } from "../../redux/actions/action";
-import { logout } from "../../redux/thunks/thunk";
+import { useNavigation } from "@react-navigation/native";
 
 const height = Dimensions.get('window').height;
 const Settings = () => {
-  const dispatch = useDispatch();
-  const logoutHandler = useCallback(() => {
-    dispatch(logout(), logoutAC());
-  },[]);
+  const navigation = useNavigation();
   return (
     <ScrollView style={styles.root}>
       <View style={styles.header}>
@@ -34,6 +27,7 @@ const Settings = () => {
         </Pressable>
         <Pressable
         style={styles.button}
+        onPress={()=> navigation.navigate("Send a testimonial")}
         >
           <Text style={styles.text}>User Info</Text>
           <AntDesign name="right" size={24} color="#eb17c0" style={{paddingRight: 23}} />

@@ -28,7 +28,7 @@ import {
 } from "react-native-reanimated";
 import TodoListScreen from "../screen/TodoListScreen/index";
 import ItemScreen from "../screen/ItemScreen/index";
-import Tutorial from "../screen/Video";
+import Tutorial from "../screen/Tutorial";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -38,8 +38,6 @@ const LoginMatch = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
       <Stack.Screen name="SignupScreen" component={SignupScreen} />
-      {/* <Stack.Screen name="SignupScreen" component={Tutorial} /> */}
-
     </Stack.Navigator>
   );
 };
@@ -47,7 +45,7 @@ const LoginMatch = () => {
 const Screens = ({ navigation }) => {
   const progress = useDrawerProgress();
   const animatedStyle = useAnimatedStyle(() => {
-    const scale = interpolate(progress.value, [0, 0.9 , 1], [1,0.95,0.80], {
+    const scale = interpolate(progress.value, [0, 1], [1, 0.8], {
       extrapolateRight: Extrapolate.CLAMP,
     });
     const borderRadius = interpolate(progress.value, [0, 1], [1, 25], {
@@ -60,13 +58,11 @@ const Screens = ({ navigation }) => {
   });
   const [open, setopen] = useState(false);
   return (
-    <View style={{ flex: 1, flexDirection: 'row'}}>
-      <View style={{ marginBottom: 25, left: 80, position: 'relative'}}>
-        
-        {
-          open === true ? (
+    <View style={{ flex: 1, flexDirection: "row" }}>
+      <View style={{ marginBottom: 25, left: 80, position: "relative" }}>
+        {open === true ? (
           <Pressable
-            style={{        
+            style={{
               marginTop: 30,
               marginLeft: 20,
               position: "absolute",
@@ -80,48 +76,50 @@ const Screens = ({ navigation }) => {
           </Pressable>
         ) : null}
       </View>
-      
+
       <Animated.View
         style={[
           {
             flex: 1,
             overflow: "hidden",
-            alignItems: 'stretch',
-            shadowColor: '#000000',
+            alignItems: "stretch",
+            shadowColor: "#000000",
             shadowOffset: {
               height: 20,
               width: -20,
             },
-            shadowOpacity:0.6,
+            shadowOpacity: 0.6,
             shadowRadius: 0,
-            elevation: 2,
-            
+            elevation: 20,
           },
           animatedStyle,
         ]}
       >
-
         <Stack.Navigator
           screenOptions={{
+            style: {
+              borderTopLeftRadius: 23,
+              borderTopRightRadius: 23,
+              height: 70,
+              alignItems: "center",
+            },
             headerTransparent: true,
-            title: '',
+            title: "",
             headerLeft: () => (
               <Pressable
                 transparent
                 onPress={() => {
                   open == true
-                  ?
-                  navigation.openDrawer()
-                  :
-                  navigation.openDrawer(setopen(!open))
+                    ? navigation.openDrawer()
+                    : navigation.openDrawer(setopen(!open));
                 }}
               >
-                <AntDesign 
-                name="arrowleft" 
-                size={24} 
-                color="white"
-                style={{ paddingHorizontal: 10 }}
-                 />
+                <AntDesign
+                  name="arrowleft"
+                  size={24}
+                  color="white"
+                  style={{ paddingHorizontal: 10 }}
+                />
               </Pressable>
             ),
             headerRight: () => (
@@ -129,10 +127,8 @@ const Screens = ({ navigation }) => {
                 transparent
                 onPress={() => {
                   open == true
-                  ?
-                  navigation.openDrawer()
-                  :
-                  navigation.openDrawer(setopen(!open))
+                    ? navigation.openDrawer()
+                    : navigation.openDrawer(setopen(!open));
                 }}
               >
                 <Feather
@@ -178,23 +174,17 @@ const HomeMatch = () => {
             backgroundColor: "transparent",
           },
           overlayColor: "transparent",
-          drawerStyle: { 
+          drawerStyle: {
             backgroundColor: "#2D3748",
             flex: 1,
-            width: '62%',
-           },
+            width: "62%",
+          },
         }}
         drawerContent={(props) => {
           return <SlicerBar {...props} />;
         }}
-          
       >
-        <Drawer.Screen
-          name="Screens"
-          options={{
-
-          }}
-        >
+        <Drawer.Screen name="Screens" options={{}}>
           {(props) => <Screens {...props} />}
         </Drawer.Screen>
       </Drawer.Navigator>
@@ -209,8 +199,7 @@ const RootNavigator = () => {
   return (
     <NavigationContainer>
       {/* {checker === false ? <LoginMatch /> : <HomeMatch />} */}
-      <LoginMatch />
-      {/* <HomeMatch /> */}
+      <HomeMatch />
     </NavigationContainer>
   );
 };

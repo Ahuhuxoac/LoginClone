@@ -55,62 +55,71 @@ const ItemScreen = () => {
   );
 
   return (
-    <View style={styles.root}>
-      <View style={styles.header}>
-        <Pressable onPress={goHome}>
-          <AntDesign name="back" size={24} color="black" />
-        </Pressable>
-        <Pressable onPress={handleSubmit(handleTitle)}>
-          <AntDesign name="save" size={24} color="black" />
-        </Pressable>
-      </View>
-      <View style={styles.container}>
-        <Text>TITLE</Text>
-        <Controller
-          control={control}
-          name="title"
-          defaultValue={Items?.title || ""}
-          render={({ field: { value, onChange, onBlur } }) => (
-            <>
-              <View style={[styles.container]}>
-                <TextInput
-                  placeholder="TITLE"
-                  value={value}
-                  onChangeText={onChange}
-                  onBlur={onBlur}
-                  style={styles.title}
-                />
-              </View>
-            </>
-          )}
-        />
-        <Text>{errors.title?.message}</Text>
+    <View style={styles.all}> 
+      <View style={styles.root}>
+        <View style={styles.header}>
+          <Pressable onPress={goHome}>
+            <AntDesign name="back" size={24} color="white" />
+          </Pressable>
+          <Pressable onPress={handleSubmit(handleTitle)}>
+            <AntDesign name="save" size={24} color="white" />
+          </Pressable>
+        </View>
+        <View style={styles.container}>
+          <Text style={{color: 'white', fontWeight: '700', marginBottom: 20, fontSize: 16}}>TITLE</Text>
+          <Controller
+            control={control}
+            name="title"
+            defaultValue={Items?.title || ""}
+            render={({ field: { value, onChange, onBlur } }) => (
+              <>
+                <View style={[styles.container]}>
+                  <TextInput
+                    placeholder="TITLE"
+                    placeholderTextColor="#ffffff"
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    style={styles.title}
+                  />
+                </View>
+              </>
+            )}
+          />
+          <Text>{errors.title?.message}</Text>
 
-        <Text>DESCRIPTION</Text>
-        <Controller
-          control={control}
-          name="description"
-          defaultValue={Items?.description || ""}
-          render={({ field: { value, onChange, onBlur } }) => (
-            <>
-              <View>
-                <TextInput
-                  placeholder="DESCRIPTION"
-                  value={value}
-                  onChangeText={onChange}
-                  onBlur={onBlur}
-                  style={styles.description}
-                />
-              </View>
-            </>
-          )}
-        />
+          <Text style={{color: 'white', fontWeight: '700', marginBottom: 20, fontSize: 16}}>DESCRIPTION</Text>
+          <Controller
+            control={control}
+            name="description"
+            defaultValue={Items?.description || ""}
+            render={({ field: { value, onChange, onBlur } }) => (
+              <>
+                <View>
+                  <TextInput
+                    placeholder="DESCRIPTION"
+                    placeholderTextColor="#ffffff"
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    style={styles.description}
+                  />
+                </View>
+              </>
+            )}
+          />
+        </View>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  all:{
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#2D3748',
+  },
   root: {
     margin: 20,
     marginTop: 130,
@@ -127,12 +136,13 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: "#A4BCC1",
     paddingLeft: 40,
-    color: "pink",
   },
   title: {
     height: 50,
-    color: "#A4BCC1",
-    paddingLeft: 50,
+    color: "whitedsvvsd",
+    backgroundColor: '#87c498',
+    borderRadius: 15,
+    paddingLeft: 20,
   },
 });
 export default ItemScreen;

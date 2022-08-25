@@ -139,7 +139,7 @@ export const SlicerBar = (props) => {
                 lineHeight: 20,
                 color: "#959EA7",
               }}
-              onPress={() => props.navigation.navigate("Settings")}
+              onPress={() => props.navigation.navigate("Disclaimer")}
               icon={() => (
                 <MaterialIcons name="dangerous" size={24} color="#959EA7" />
               )}

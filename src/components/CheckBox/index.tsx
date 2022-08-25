@@ -11,7 +11,7 @@ const CheckBox = (props: CheckBoxProps) => {
   const icon = isChecked ? "checkbox-marked" : "checkbox-blank";
   return (
     <Pressable onPress={onPress}>
-      <MaterialCommunityIcons name={icon} size={24} color="black" />
+      <MaterialCommunityIcons name={icon} size={24} color="white" />
     </Pressable>
   );
 };

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   title: {
     flex: 1,
-    color: 'black',
+    color: 'white',
     fontSize: 16,
     marginLeft: 7,
  

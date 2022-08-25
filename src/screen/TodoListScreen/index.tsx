@@ -20,40 +20,48 @@ const TodoListScreen = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.titleapp}>TODO APP</Text>
+    <View style={styles.root}>
+      <View style={styles.container}>
+        <Text style={styles.titleapp}>TODO APP</Text>
 
-      <FlatList
-        data={Items}
-        renderItem={({ item }) => <TodoItem todo={item} />}
-        style={{ width: "100%" }}
-      />
+        <FlatList
+          data={Items}
+          renderItem={({ item }) => <TodoItem todo={item} />}
+          style={{ width: "100%" }}
+        />
 
-      <View style={styles.icon}>
-        <Pressable onPress={goDetail}>
-          <AntDesign name="pluscircleo" size={40} color="black" />
-        </Pressable>
       </View>
+      <View style={styles.icon}>
+          <Pressable onPress={goDetail}>
+            <AntDesign name="pluscircleo" size={40} color="white" />
+          </Pressable>
+        </View>
     </View>
+    
   );
 };
 
 const styles = StyleSheet.create({
+  root: {
+    height: "100%",
+    width: "100%",
+    backgroundColor: '#2D3748'
+  },
   container: {
     marginTop: 70,
     margin: 20,
-    height: "100%",
-    width: "100%",
+    height: '80%',
   },
   icon: {
     alignItems: "center",
-    bottom: 150,
     height: 40,
+    color: 'white'
   },
   titleapp: {
     fontSize: 40,
     fontWeight: "500",
     textAlign: "center",
+    color: 'white'
   },
 });
 

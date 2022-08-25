@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutAC } from "../../redux/actions/action";
 import { logout } from "../../redux/thunks/thunk";
 import { LinearGradient } from "expo-linear-gradient";
+import { useNavigation } from "@react-navigation/native";
 const Send = () => {
   const dispatch = useDispatch();
   const logoutHandler = useCallback(() => {
@@ -14,12 +15,10 @@ const Send = () => {
   }, []);
   let email = '19020590@gmail.com';
   let password = '******';
-  
 
   return (
     <View style={styles.root}>
       <View style={styles.header}>
-        <AntDesign name="back" size={28} color="white" />
         <Text style={styles.title}>User info</Text>
       </View>
       <View style={styles.container}>
@@ -95,7 +94,6 @@ const Send = () => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: "#2D3748",
-    opacity: 0.8,
     height: "100%",
     width: "100%",
   },
@@ -104,9 +102,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginLeft: 24,
     alignItems: "center",
+    justifyContent:'center'
   },
   title: {
-    marginLeft: 101,
     fontSize: 17,
     fontWeight: '500',
     color: "#ffffff",
