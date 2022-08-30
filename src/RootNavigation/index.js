@@ -29,7 +29,6 @@ import {
 import TodoListScreen from "../screen/TodoListScreen/index";
 import ItemScreen from "../screen/ItemScreen/index";
 import Tutorial from "../screen/Tutorial";
-
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -198,8 +197,7 @@ const RootNavigator = () => {
   });
   return (
     <NavigationContainer>
-      {/* {checker === false ? <LoginMatch /> : <HomeMatch />} */}
-      <HomeMatch />
+      {checker === false ? <LoginMatch /> : <HomeMatch />}
     </NavigationContainer>
   );
 };

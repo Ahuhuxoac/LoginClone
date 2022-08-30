@@ -139,7 +139,6 @@ const styles = StyleSheet.create({
   },
   title: {
     height: 50,
-    color: "whitedsvvsd",
     backgroundColor: '#87c498',
     borderRadius: 15,
     paddingLeft: 20,
